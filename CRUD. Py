@@ -1,0 +1,40 @@
+From basic import db, puppy
+
+#create
+
+My_puppy =puppy('Rufus', 5) 
+Db. Session.add(puppy) 
+Db. Session. Commit() 
+
+#Read
+All_puppies=puppy.query_all() 
+Print(puppies) 
+
+#select_by_id
+
+Puppy_one=puppy.query.get(1) 
+Print(puppy_one.name) 
+
+#fiilter
+#pdoduce some sql code
+
+Puppy_Frankie=puppy.query. filter_by(name='Frankie') 
+Print (puppy_Frankie.all()) 
+
+#frankie is 3 years old
+
+#UPDATE
+
+First_Puppy=puppy.query.get(1) 
+First_puppy.age=10
+db. Session. Add(first_puppy) 
+Db.session.commit() 
+
+#delete
+Second_Puppy=puppy.query.get(2) 
+db. Session. delete(second_puppy) 
+Db.session.commit() 
+
+all_puppies=puppy.query.all() 
+Print (all_puppies) 
+

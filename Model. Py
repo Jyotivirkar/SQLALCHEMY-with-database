@@ -68,5 +68,5 @@ def __init__(self,name, puppy_id)
      self.Name=name
      Self. Puppy_id=puppy_id
  
-  def __repr__(self)
+ 
 

@@ -1,0 +1,38 @@
+
+#Create entries in table
+
+
+From models import db, puppy, owner, toys
+
+#creating two puppies
+
+
+Rufus=puppy('Rufus')
+Fido=puppy('fido') 
+
+#add puppies in database
+Db. Session.add_all(rufus, fido) 
+Db. Session. Commit() 
+
+#check! 
+Print (puppy.query.all()) 
+
+Rufus=puppy.query. filter_by(name='Rufus'). First() 
+Print (Rufus) 
+
+#create owner object
+ Jose=owner ('Jose', Rufus. id) 
+
+#give Rufus some toys
+Toys1=toy('chew toys', Rufus. id) 
+Toys2=toy('ball', Rufus. id) 
+
+Db. Session.add_all([Jose,toys1, toys2]) 
+Db.session.commit()
+
+#grab Rufus after those additons
+Rufus=puppy.query. filter_by(name='Rufus'). First()
+Print(Rufus) 
+
+
+Print(Rufus. Report_toys ())

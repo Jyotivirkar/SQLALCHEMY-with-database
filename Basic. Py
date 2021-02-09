@@ -1,0 +1,44 @@
+
+import os
+from flask import Flask
+from flask_Sqlalchemy import sqlalchemy
+
+Basedir=OS.path.absname(os.path.dirname(__file__) 
+
+app=Flask(__name__) 
+
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///'os.path.join(basedir, 'data_sqlite'
+app. Config['SQLALCHEMY_TRACK_MODIFICATIONS']= false
+ 
+db=SQLALCHEMY(app) 
+
+Class puppy (flask) :
+    
+   _tablename_='puppies'
+   id=db.column(db.integer primary key=true) 
+   Name=db.column(db.text) 
+   Age=db.column(db.integer) 
+
+  def __init__(self, name, are) 
+     self. Name=name
+     self. Age=age
+
+  def __repr__(self)
+     return f"puppy {self. Name} is {self.age} years old"
+
+@app.route('/',method='GET,POST') 
+   def index() :
+
+    Form=Inform() 
+
+   if form. Validate_on_submit ():
+    Session ['breed']=form.breed.data
+   Flash(f"you just change your breed to:{session['breed']}") 
+
+
+  return redirect(url_for('index')) 
+
+return render_template('index.html',form=form) 
+
+if __name__=='__main__':
+app. run(debug=true)

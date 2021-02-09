@@ -1,1 +1,72 @@
- From flask import
+From flask os
+From flask import
+from flask_Sqlalchemy import sqlalchemy
+From flask_migrate import migrate
+
+Basedir=OS.path.absname(os.path.dirname(__file__) 
+
+app=Flask(__name__) 
+
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///'os.path.join(basedir, 'data_sqlite'
+app. Config['SQLALCHEMY_TRACK_MODIFICATIONS']= false
+ 
+db=SQLALCHEMY(app) 
+Migrate(app,Db) 
+
+Class puppy (db.model) :
+    
+   _tablename_='puppies'
+
+   id=db.column(db.integer primary key=true) 
+   Name=db.column(db.text) 
+
+ #one to many relationship
+ #puppy to many toy
+
+Toys=db.relationship('toys',backref='puppy',Lazy='dynamic') 
+  
+#one to one relationship
+  # one puppy to one owner
+Puppy=db.relationship('puppy',backref='puppy',uselist=false)
+
+  def __init__(self, name) 
+     self. Name=name
+ 
+  def __repr__(self)
+    if self. Owner:
+     return f"puppy name is {self. Name} and owner is {self.owner.name}"
+    Else:
+     return f" Puppy name is {self.name} and owner was not yet! "
+
+   def report_toys(self):
+       Print("here are my toys") 
+     For toy in self. Toys:
+       Print(toy.item.name) 
+
+Class toys(db.model) :
+    
+   _tablename_='toys'
+
+   id=db.column(db.integer primary key=true) 
+   item_Name=db.column(db.text) 
+   Puppy_id=db.column(db.integer, db.foreign key(puppy_id))
+
+   def __init__(self, item_name, puppy_id) 
+     self. item_Name=item_name
+     Self. Puppy_id=puppy_id
+
+
+Class owner(db.model) :
+    
+   _tablename_='owner'
+
+   id=db.column(db.integer primary key=true) 
+   Name=db.column(db.text) 
+   Puppy_id=db.column(db.integer, db.foreign key(puppy_id))
+
+def __init__(self,name, puppy_id) 
+     self.Name=name
+     Self. Puppy_id=puppy_id
+ 
+  def __repr__(self)
+

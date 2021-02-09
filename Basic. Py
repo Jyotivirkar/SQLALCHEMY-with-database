@@ -2,6 +2,7 @@
 import os
 from flask import Flask
 from flask_Sqlalchemy import sqlalchemy
+From flask_migrate import migrate
 
 Basedir=OS.path.absname(os.path.dirname(__file__) 
 
@@ -11,20 +12,28 @@ app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///'os.path.join(basedir, 'data_sq
 app. Config['SQLALCHEMY_TRACK_MODIFICATIONS']= false
  
 db=SQLALCHEMY(app) 
+Migrate(app,Db) 
 
-Class puppy (flask) :
+Class puppy (db.model) :
     
    _tablename_='puppies'
+
    id=db.column(db.integer primary key=true) 
    Name=db.column(db.text) 
    Age=db.column(db.integer) 
-
-  def __init__(self, name, are) 
+   Breed=db.column(db.text
+  def __init__(self, name,breed) 
      self. Name=name
      self. Age=age
+      Self. Breed
 
   def __repr__(self)
      return f"puppy {self. Name} is {self.age} years old"
+
+
+
+
+
 
 @app.route('/',method='GET,POST') 
    def index() :
@@ -42,3 +51,12 @@ return render_template('index.html',form=form)
 
 if __name__=='__main__':
 app. run(debug=true)
+
+
+
+#install migrate 
+
+Set FLASK_APP=basic.py
+Flask db migrate -m "create puppy tabletable"
+Flask db upgrade
+

@@ -1,0 +1,18 @@
+From basic import db, puppy
+
+db. Create_all() 
+
+Sam=puppy ('Jose', 3) 
+Frankie=puppy ('Frankie', 4) 
+
+Print(Sam,id) 
+Print(Frankie, id) 
+
+db. Session. Add_all([sam, frank]) 
+Session. Comit() 
+
+
+Print(Sam,id) 
+Print(Frankie, id)
+
+

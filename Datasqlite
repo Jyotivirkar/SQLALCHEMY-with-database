@@ -1,0 +1,12 @@
+SQLITE FORMAT 3
+
+
+
+
+
+{
+I'd INTEGER not null, 
+name TEXT, 
+age INTEGER, 
+PRIMERY KEY(id) 
+}
